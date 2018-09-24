@@ -2,6 +2,7 @@
 
 class r (
   $package_ensure = installed,
+  $packages       = {},
 ) {
 
   case $::osfamily {
@@ -21,5 +22,8 @@ class r (
     }
     default: { fail("Not supported on osfamily ${::osfamily}") }
   }
+
+  # Create any defined package resources as well
+  create_resources('r::package', $packages)
 
 }
