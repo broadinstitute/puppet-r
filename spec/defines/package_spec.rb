@@ -1,7 +1,7 @@
 # for rspec-puppet documentation - see http://rspec-puppet.com/tutorial/
 require_relative '../spec_helper'
 
-describe 'r::package' do
+describe 'r_lang::package' do
 
   describe 'In ubuntu/redhat' do
 

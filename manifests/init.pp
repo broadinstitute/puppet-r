@@ -1,15 +1,18 @@
 # init.pp
 
-class r (
-  $package_ensure = installed,
+class r_lang (
+  Enum['absent', 'installed'] $package_ensure = 'installed',
 ) {
-
-  case $::osfamily {
+  case $facts['os']['family'] {
     'Debian': {
-      package { 'r-base': ensure => $package_ensure }
+      package { 'r-base':
+        ensure => $package_ensure,
+      }
     }
     'RedHat': {
-      package { 'R-core': ensure => $package_ensure }
+      package { 'R-core':
+        ensure => $package_ensure,
+      }
     }
     'windows': {
       # Choco package does not install static version and does not add R to PATH
@@ -19,7 +22,6 @@ class r (
         unless   => "if(Test-Path \"\${Env:ProgramFiles}\\R\\R-*\\bin\\R.exe\"){exit 0}else{exit 1}",
       }
     }
-    default: { fail("Not supported on osfamily ${::osfamily}") }
+    default: { fail("Not supported on osfamily ${facts['os']['family']}") }
   }
-
 }
