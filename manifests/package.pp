@@ -44,7 +44,7 @@ define r::package (
       $command = $dependencies ? {
         true    => "${binary} -e \"install.packages('${name}', 
                    repos='${repo}',
-                   configure.vars=\"TMPDIR=${tmpdir}\",
+                   configure.vars = \"TMPDIR=${tmpdir}\",
                    dependencies = TRUE)\"",
         default => "${binary} -e \"install.packages('${name}',
                    repos='${repo}',
