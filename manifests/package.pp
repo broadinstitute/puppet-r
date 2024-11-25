@@ -55,7 +55,7 @@ define r_lang::package (
         environment => $environment,
         timeout     => $timeout,
         unless      => "${binary} -q -e \"'${name}' %in% installed.packages()\" | grep 'TRUE'",
-        require     => Class['r'],
+        require     => Class['r_lang'],
       }
     }
     'windows': {
