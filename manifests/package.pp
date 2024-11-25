@@ -25,7 +25,7 @@
 #   Default: /opt/shiny-server/tmp
 #
 #
-define r::package (
+define r_lang::package (
   Optional[String] $r_path       = undef,
   String           $repo         = 'https://cran.rstudio.com',
   Boolean          $dependencies = false,
