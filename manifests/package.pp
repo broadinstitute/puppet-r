@@ -50,11 +50,6 @@ define r_lang::package (
                    repos='${repo}',
                    dependencies = FALSE)\""
       }
-      if dependencies {
-        file { $tmpdir:
-          ensure => directory,
-        }
-      }
       exec { "install_r_package_${name}":
         command     => $command,
         environment => $environment,
