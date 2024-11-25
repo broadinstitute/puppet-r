@@ -1,6 +1,6 @@
 # init.pp
 
-class r (
+class r_lang (
   $package_ensure = installed,
 ) {
 
